@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "27a458cf-2589-42f5-85cc-3354c0934755",
+		"name": "PNG tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "408166",
+		"_collection_link": "https://interstellar-flare-346173.postman.co/workspace/Team-Workspace~8eb3b204-26ac-4a2d-8ffa-45433d1e13ed/collection/408166-27a458cf-2589-42f5-85cc-3354c0934755?action=share&source=collection_link&creator=408166"
+	},
+	"item": [
+		{
+			"name": "PNG test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const streamValue = pm.response.stream;",
+							"// console.log(atob(streamValue));",
+							"// pm.collectionVariables.set(\"testBase\", atob(streamValue));",
+							"",
+							"pm.test(\"PNG stream value is correct\", function () {",
+							"    pm.expect(atob(streamValue)).to.eql(pm.collectionVariables.get(\"testBase\"));",
+							"});",
+							"",
+							"// console.log(streamValue.toString('base64'))",
+							"// pm.collectionVariables.set(\"testBaseString\", streamValue.toString('base64'));",
+							"pm.test(\"PNG stream value is correct by buf.toString\", function () {",
+							"    pm.expect(streamValue.toString('base64')).to.eql(pm.collectionVariables.get(\"testBaseString\"));",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Test1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"qrserver",
+						"com"
+					],
+					"path": [
+						"v1",
+						"create-qr-code",
+						""
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "150x150"
+						},
+						{
+							"key": "data",
+							"value": "Test1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "testBase",
+			"value": "PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0003\u0000\u0000\u0000\u0006Ïã¡\u0000\u0000\u0000\u0006PLTEÿÿÿ\u0000\u0000\u0000UÂÓ~\u0000\u0000\u0000\tpHYs\u0000\u0000\u000eÄ\u0000\u0000\u000eÄ\u0001+\u000e\u001b\u0000\u0000\u0000×IDATHÍ»\r0\u0010DÇ\" ¤\u0004Bi¦4J¡\u0004Bý\u0018;\u00113ld=\u0011óÖ\u0006n¦Í$²f?o<fò\\äÓ¯yÖsOd\u001e¬åóOtV*ú·0¼µÞÐmøïòq\u0016>d\u000eý:þ8;¦ÞìûÓÌòY0ýWÃ2NU\u0019\u0001È2J«Ç\u001d¢1-ÌzseÚHLå²º\u000fD¦\u0006{\u0017Ôg|»¤°Sá`IìØój>£S¥Ë­°1®\u001c\u001ako\u0014®ùÈÌ÷\\w+\u001c'3\u0017¦DeÑ[S\t\\Ö|ÖGûºû¯a7³\u0003R%Ú-çpw\u0000\u0000\u0000\u0000IEND®B`"
+		},
+		{
+			"key": "testBaseString",
+			"value": "iVBORw0KGgoAAAANSUhEUgAAAJYAAACWAQMAAAAGz+OhAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA10lEQVRIic2Vuw2EMBBExyIgpASXQmmmNEqhBEKCk5f9GI47ETNsZD2SEfPWBm6miM2MJLJmP288ZoHyXOTTr3nWc09kHqzl8090Vir6tzC8grXe0G347/JxFj6XZA79Ov44O6be7PvTzPJZMP1XwzJOVX8ZjQGdyDJKiqvHHaIxLcx6c59litpITOWJsrqWD0SmiQZ7F9RnfLuksFPhYEmI7Njzaj6jnI5TmKXLrbAxrhwaa28UrvnIzPdcdyscJzN/F6ZEZdFbUwlc1nzWR/u6+69hN7MDUiWR2i3ncHcAAAAASUVORK5CYII="
+		}
+	]
+}
